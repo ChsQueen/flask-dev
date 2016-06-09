@@ -1,9 +1,10 @@
+import os
 from flask import render_template, jsonify, request
 from app import app
 from cassandra.cluster import Cluster
 
 # setting up connections to cassandra
-cluster = Cluster(['54.213.166.137'])
+cluster = Cluster([os.environ["CASSANDRA_IP"]])
 session = cluster.connect('playground')
 
 @app.route('/')
